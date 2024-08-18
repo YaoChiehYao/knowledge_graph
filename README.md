@@ -24,7 +24,7 @@ CREATE DATABASE ibkh;
 SHOW DATABASES;
 ```
 
-6. Import Dump file to Neo4j database
+5. Import Dump file to Neo4j database
 ```bash
 docker exec -it your_container_id neo4j-admin database load ibkh --from-path=/var/lib/neo4j/import/dump --overwrite-destination=true --verbose```
 ```
