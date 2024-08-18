@@ -9,21 +9,25 @@ This project builds a neo4j graph based on multiple medical databases from iBKH 
 mkdir data import  
 
 2. Download dump file to import folder
-[Dunmp file] (https://drive.google.com/file/d/11mHAlsWn-hFODjt3qKkS3rro1t1ceGtK/view?usp=drive_link) 
+[Dunmp file](https://drive.google.com/file/d/11mHAlsWn-hFODjt3qKkS3rro1t1ceGtK/view?usp=drive_link) 
 
 3. Use Docker file to install Neo4j and check if the import folder connect to container 
+```bash 
 Docker compose up -d
-
 docker exec -it your_container_id /bin/bash
-
 ls import/
+```
 
 4. Create a new database in neo4j browser to import the dump file
+```Neo4j Cypher
 CREATE DATABASE ibkh;
 SHOW DATABASES;
+```
 
-5. Import Dump file to Neo4j database
-docker exec -it your_container_id neo4j-admin database load ibkh --from-path=/var/lib/neo4j/import/dump --overwrite-destination=true --verbose
+6. Import Dump file to Neo4j database
+```bash
+docker exec -it your_container_id neo4j-admin database load ibkh --from-path=/var/lib/neo4j/import/dump --overwrite-destination=true --verbose```
+```
 
 After the database is built, you can use iBKH.ipynb to chat with the biomedical data and chatbot, which will respond natively by llm 
 if your question is not inside the graph database.
